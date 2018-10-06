@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+HOSTNAME=soberbot94-instance
+
 function setHostname () {
-	hostnamectl set-hostname soberbot94-instance
-	echo "soberbot94-instance" > /etc/hostname
-	sed -i 's/\([0-9]*.[0-9]*.[0-9]*.[0-9]*[ ]\)\([a-z]*[ ]*\)\([a-z]*[0-9]*-[a-z]*\)*/127.0.0.1 localhost soberbot94-instance/g' /etc/hosts
+	hostnamectl set-hostname ${HOSTNAME}
+	echo ${HOSTNAME} > /etc/hostname
+	sed -i "s/\([0-9]*.[0-9]*.[0-9]*.[0-9]*[ ]\)\([a-z]*[ ]*\)\([a-z]*[0-9]*-[a-z]*\)*/127.0.0.1 localhost ${HOSTNAME}/g" /etc/hosts
 	systemctl restart systemd-logind.service 
 }
 
