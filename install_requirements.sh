@@ -25,9 +25,14 @@ function installOpenstackClient () {
 	apt-get -y install python-openstackclient
 }
 
+function installPipRequirements () {
+	sudo -H python3 -m pip install yml
+}
+
 if [[ ${BASH_SOURCE[0]} == ${0} ]]; then
 	setHostname
 	updatePackages
 	installPython3
 	installOpenstackClient
+	installPipRequirements
 fi
