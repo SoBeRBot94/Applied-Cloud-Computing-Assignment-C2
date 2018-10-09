@@ -1,0 +1,11 @@
+---
+
+config:
+  Flavor: "ACCHT18.normal"
+  PrivateNetwork: "SNIC 2018/10-30 Internal IPv4 Network"
+  FloatingIPPoolName: "Public External IPv4 network"
+  FloatingIP: "130.238.29.106"
+  ImageName: "Ubuntu 16.04 LTS (Xenial Xerus) - latest"
+  SecurityGroup: 'SoBeR'
+  InstanceName: "Sudo's Spawned VM"
+  KeyPair: "SoBeRBot94"
