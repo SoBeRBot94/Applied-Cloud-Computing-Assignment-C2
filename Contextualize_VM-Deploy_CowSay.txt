@@ -1,4 +1,4 @@
-#cloud-config
+#Contextualize_VM-Deploy_CowSay
 
 apt_update: true
 apt_upgrade: true
