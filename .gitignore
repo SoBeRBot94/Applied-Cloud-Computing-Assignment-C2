@@ -2,3 +2,5 @@ Contextualize_VM-Deploy_CowSay.txt
 Dockerfile
 README.md
 docker-compose.yml
+cowsay.py
+requirements.txt
