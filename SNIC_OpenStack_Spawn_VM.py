@@ -43,7 +43,7 @@ else:
 
 #print("Path at terminal when executing this file")
 #print(os.getcwd() + "\n")
-cfg_file_path =  os.getcwd()+'/cloud-cfg.txt'
+cfg_file_path =  os.getcwd()+'/Contextualize_VM-Deploy_CowSay.txt'
 if os.path.isfile(cfg_file_path):
     userdata = open(cfg_file_path)
 else:
