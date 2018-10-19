@@ -1,5 +1,8 @@
 #cloud-config
 
+# Log cloud-Init Process Output
+output: {all: ">> /var/log/cloud-init-output.log"}
+
 apt_update: true
 apt_upgrade: true
 packages:
