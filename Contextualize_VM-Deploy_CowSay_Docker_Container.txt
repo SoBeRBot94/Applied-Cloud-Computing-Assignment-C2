@@ -9,55 +9,6 @@ packages:
  - software-properties-common
 byoub_default: system
 
-write_files:
-  - path: /home/ubuntu/cowsay/Dockerfile
-    content: |
-      FROM ubuntu:xenial
-
-      LABEL maintainer="Sudarsan Bhargavan"
-
-      WORKDIR /cowsay-app
-
-      ADD ./requirements.txt /cowsay-app/requirements.txt
-      ADD ./cowsay.py /cowsay-app/cowsay.py
-
-      RUN apt-get -y update
-      RUN apt-get -y upgrade
-      RUN apt-get -y install cowsay python3 python3-pip
-      RUN python3 -m pip install --upgrade pip
-      RUN python3 -m pip install -r /cowsay-app/requirements.txt
-
-      ENV PATH="${PATH}:/usr/games"
-
-      EXPOSE 5000
-
-      ENTRYPOINT python3 /cowsay-app/cowsay.py
-
-  - path: /home/ubuntu/cowsay/cowsay.py
-    content: |
-      #!/usr/bin/env python3
-
-      from flask import Flask, jsonify
-      import subprocess
-      import sys
-      import os
-
-      app = Flask(__name__)
-      @app.route('/cowsay/api/v1.0/saysomething', methods=['GET'])
-      def cow_say():
-          containerHostname = os.uname().nodename
-	  data=subprocess.check_output(["cowsay","Hello student"])
-          return data, containerHostname
-
-      if __name__ == '__main__':
-
-      app.run(host='0.0.0.0',debug=True)
-
-  - path: /home/ubuntu/cowsay/requirements.txt
-    content: |
-      flask==1.0.2
-
-
 runcmd:
  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
  - add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -65,5 +16,6 @@ runcmd:
  - apt-get install -y docker-ce
  - systemctl enable docker
  - systemctl start docker
- - docker build --rm -t cowsay:latest --file /home/ubuntu/cowsay/Dockerfile
- - docker run --rm -d -p 5000:5000 cowsay
+ - docker pull soberbot94/cowsay-as-a-service
+ - docker build --rm -t soberbot94/cowsay-as-a-service:latest
+ - docker run --rm -d -p 5000:5000 soberbot94/cowsay-as-a-service:latest
