@@ -62,5 +62,5 @@ runcmd:
  - apt-get install -y docker-ce
  - systemctl enable docker
  - systemctl start docker
- - docker build --rm -t cowsay:latest --file /home/ubuntu/Dockerfile
+ - docker build --rm -t cowsay:latest --file /home/ubuntu/cowsay/Dockerfile
  - docker run --rm -d -p 5000:5000 cowsay
