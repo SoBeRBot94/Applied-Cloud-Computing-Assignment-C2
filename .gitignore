@@ -3,3 +3,4 @@ Dockerfile
 README.md
 cowsay.py
 docker-compose.yml
+requirements.txt
