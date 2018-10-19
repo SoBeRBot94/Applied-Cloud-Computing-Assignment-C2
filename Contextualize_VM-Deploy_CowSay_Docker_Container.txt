@@ -1,4 +1,10 @@
-#Contextualize_VM-Deploy_CowSay_Docker_Container
+#cloud-cfg
+
+apt_update: true
+apt_upgrade: true
+packages:
+ - software-properties-common
+byoub_default: system
 
 write_files:
   - path: /home/ubuntu/Dockerfile
@@ -26,9 +32,6 @@ write_files:
 
 
 runcmd:
- - apt-get -y update
- - apt-get -u upgrade
- - apt-get -y install software-properties-common
  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
  - add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
  - apt-get -y update
